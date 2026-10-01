@@ -1,0 +1,52 @@
+<?xml version="1.0" ?>
+<!DOCTYPE Xdmf SYSTEM "Xdmf.dtd" []>
+<Xdmf Version="2.0">
+  <Domain>
+
+    <Grid Name="mesh_tally_4" GridType="Collection" CollectionType="Temporal">
+    <!-- Rectangular mesh tally -->
+
+      <Grid Name="mesh_tally_4_time_0" GridType="Collection">
+
+        <Grid Name="mesh_tally_4_time_0_energy_0" GridType="Uniform">
+          <Topology TopologyType="3DRectMesh" NumberOfElements="91 61 51"/>
+          <Geometry GeometryType="VXVYVZ">
+            <DataItem Dimensions="51" NumberType="Float" Precision="8" Format="HDF">
+              c_source-batch.h5:/results/mesh_tally/mesh_tally_4/grid_x
+            </DataItem>
+            <DataItem Dimensions="61" NumberType="Float" Precision="8" Format="HDF">
+              c_source-batch.h5:/results/mesh_tally/mesh_tally_4/grid_y
+            </DataItem>
+            <DataItem Dimensions="91" NumberType="Float" Precision="8" Format="HDF">
+              c_source-batch.h5:/results/mesh_tally/mesh_tally_4/grid_z
+            </DataItem>
+          </Geometry>
+          <Attribute Name="4_tally" Center="Cell" Type="Scalar">
+            <DataItem ItemType="HyperSlab" Dimensions="90 60 50" Type="HyperSlab">
+              <DataItem Dimensions="5 3" Format="XML">
+                0 0 0 0 0
+                1 1 1 1 1
+                1 1 90 60 50
+              </DataItem>
+              <DataItem ItemType="Uniform" Format="HDF" NumberType="Float" Precision="8" Dimensions="1 1 90 60 50">
+                c_source-batch.h5:/results/mesh_tally/mesh_tally_4/mean
+              </DataItem>
+            </DataItem>
+          </Attribute>
+          <Attribute Name="4_relative_standard_deviation" Center="Cell" Type="Scalar">
+            <DataItem ItemType="HyperSlab" Dimensions="90 60 50" Type="HyperSlab">
+              <DataItem Dimensions="5 3" Format="XML">
+                0 0 0 0 0
+                1 1 1 1 1
+                1 1 90 60 50
+              </DataItem>
+              <DataItem ItemType="Uniform" Format="HDF" NumberType="Float" Precision="8" Dimensions="1 1 90 60 50">
+                c_source-batch.h5:/results/mesh_tally/mesh_tally_4/relative_standard_error
+              </DataItem>
+            </DataItem>
+          </Attribute>
+        </Grid>
+      </Grid>
+    </Grid>
+  </Domain>
+</Xdmf>

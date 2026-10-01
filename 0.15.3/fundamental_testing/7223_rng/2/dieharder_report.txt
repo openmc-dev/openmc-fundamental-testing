@@ -1,0 +1,201 @@
+DIEHARD TEST RESULTS
+  0 diehard_birthdays                0.98329684   PASSED
+  2 diehard_rank_32x32               0.08363042   PASSED
+  3 diehard_rank_6x8                 0.2733622    PASSED
+  4 diehard_bitstream                0.74958927   PASSED
+  5 diehard_opso                     0.83213862   PASSED
+  6 diehard_oqso                     0.97963325   PASSED
+  7 diehard_dna                      0.51813541   PASSED
+  8 diehard_count_1s_str             0.09337649   PASSED
+  9 diehard_count_1s_byt             0.19336611   PASSED
+ 10 diehard_parking_lot              0.94949259   PASSED
+ 11 diehard_2dsphere                 0.57165743   PASSED
+ 12 diehard_3dsphere                 0.67965007   PASSED
+ 13 diehard_squeeze                  0.04661947   PASSED
+ 15 diehard_runs                     0.52150651   PASSED
+ 15 diehard_runs                     0.75817256   PASSED
+ 16 diehard_craps                    0.91985122   PASSED
+ 16 diehard_craps                    0.81478325   PASSED
+OVERALL: PASS
+
+RAW TEST 0
+#=============================================================================#
+#            dieharder version 3.31.1 Copyright 2003 Robert G. Brown          #
+#=============================================================================#
+   rng_name    |           filename             |rands/second|
+ file_input_raw|            pcg_random_bytes.bin|  4.06e+06  |
+#=============================================================================#
+        test_name   |ntup| tsamples |psamples|  p-value |Assessment
+#=============================================================================#
+   diehard_birthdays|   0|       100|     100|0.98329684|  PASSED  
+
+
+RAW TEST 2
+#=============================================================================#
+#            dieharder version 3.31.1 Copyright 2003 Robert G. Brown          #
+#=============================================================================#
+   rng_name    |           filename             |rands/second|
+ file_input_raw|            pcg_random_bytes.bin|  4.97e+06  |
+#=============================================================================#
+        test_name   |ntup| tsamples |psamples|  p-value |Assessment
+#=============================================================================#
+  diehard_rank_32x32|   0|     40000|     100|0.08363042|  PASSED  
+
+
+RAW TEST 3
+#=============================================================================#
+#            dieharder version 3.31.1 Copyright 2003 Robert G. Brown          #
+#=============================================================================#
+   rng_name    |           filename             |rands/second|
+ file_input_raw|            pcg_random_bytes.bin|  3.78e+06  |
+#=============================================================================#
+        test_name   |ntup| tsamples |psamples|  p-value |Assessment
+#=============================================================================#
+    diehard_rank_6x8|   0|    100000|     100|0.27336220|  PASSED  
+
+
+RAW TEST 4
+#=============================================================================#
+#            dieharder version 3.31.1 Copyright 2003 Robert G. Brown          #
+#=============================================================================#
+   rng_name    |           filename             |rands/second|
+ file_input_raw|            pcg_random_bytes.bin|  4.43e+06  |
+#=============================================================================#
+        test_name   |ntup| tsamples |psamples|  p-value |Assessment
+#=============================================================================#
+   diehard_bitstream|   0|   2097152|     100|0.74958927|  PASSED  
+
+
+RAW TEST 5
+#=============================================================================#
+#            dieharder version 3.31.1 Copyright 2003 Robert G. Brown          #
+#=============================================================================#
+   rng_name    |           filename             |rands/second|
+ file_input_raw|            pcg_random_bytes.bin|  4.07e+06  |
+#=============================================================================#
+        test_name   |ntup| tsamples |psamples|  p-value |Assessment
+#=============================================================================#
+        diehard_opso|   0|   2097152|     100|0.83213862|  PASSED  
+
+
+RAW TEST 6
+#=============================================================================#
+#            dieharder version 3.31.1 Copyright 2003 Robert G. Brown          #
+#=============================================================================#
+   rng_name    |           filename             |rands/second|
+ file_input_raw|            pcg_random_bytes.bin|  3.58e+06  |
+#=============================================================================#
+        test_name   |ntup| tsamples |psamples|  p-value |Assessment
+#=============================================================================#
+        diehard_oqso|   0|   2097152|     100|0.97963325|  PASSED  
+
+
+RAW TEST 7
+#=============================================================================#
+#            dieharder version 3.31.1 Copyright 2003 Robert G. Brown          #
+#=============================================================================#
+   rng_name    |           filename             |rands/second|
+ file_input_raw|            pcg_random_bytes.bin|  3.21e+06  |
+#=============================================================================#
+        test_name   |ntup| tsamples |psamples|  p-value |Assessment
+#=============================================================================#
+         diehard_dna|   0|   2097152|     100|0.51813541|  PASSED  
+
+
+RAW TEST 8
+#=============================================================================#
+#            dieharder version 3.31.1 Copyright 2003 Robert G. Brown          #
+#=============================================================================#
+   rng_name    |           filename             |rands/second|
+ file_input_raw|            pcg_random_bytes.bin|  3.67e+06  |
+#=============================================================================#
+        test_name   |ntup| tsamples |psamples|  p-value |Assessment
+#=============================================================================#
+diehard_count_1s_str|   0|    256000|     100|0.09337649|  PASSED  
+
+
+RAW TEST 9
+#=============================================================================#
+#            dieharder version 3.31.1 Copyright 2003 Robert G. Brown          #
+#=============================================================================#
+   rng_name    |           filename             |rands/second|
+ file_input_raw|            pcg_random_bytes.bin|  3.85e+06  |
+#=============================================================================#
+        test_name   |ntup| tsamples |psamples|  p-value |Assessment
+#=============================================================================#
+diehard_count_1s_byt|   0|    256000|     100|0.19336611|  PASSED  
+
+
+RAW TEST 10
+#=============================================================================#
+#            dieharder version 3.31.1 Copyright 2003 Robert G. Brown          #
+#=============================================================================#
+   rng_name    |           filename             |rands/second|
+ file_input_raw|            pcg_random_bytes.bin|  3.59e+06  |
+#=============================================================================#
+        test_name   |ntup| tsamples |psamples|  p-value |Assessment
+#=============================================================================#
+ diehard_parking_lot|   0|     12000|     100|0.94949259|  PASSED  
+
+
+RAW TEST 11
+#=============================================================================#
+#            dieharder version 3.31.1 Copyright 2003 Robert G. Brown          #
+#=============================================================================#
+   rng_name    |           filename             |rands/second|
+ file_input_raw|            pcg_random_bytes.bin|  3.38e+06  |
+#=============================================================================#
+        test_name   |ntup| tsamples |psamples|  p-value |Assessment
+#=============================================================================#
+    diehard_2dsphere|   2|      8000|     100|0.57165743|  PASSED  
+
+
+RAW TEST 12
+#=============================================================================#
+#            dieharder version 3.31.1 Copyright 2003 Robert G. Brown          #
+#=============================================================================#
+   rng_name    |           filename             |rands/second|
+ file_input_raw|            pcg_random_bytes.bin|  3.72e+06  |
+#=============================================================================#
+        test_name   |ntup| tsamples |psamples|  p-value |Assessment
+#=============================================================================#
+    diehard_3dsphere|   3|      4000|     100|0.67965007|  PASSED  
+
+
+RAW TEST 13
+#=============================================================================#
+#            dieharder version 3.31.1 Copyright 2003 Robert G. Brown          #
+#=============================================================================#
+   rng_name    |           filename             |rands/second|
+ file_input_raw|            pcg_random_bytes.bin|  3.93e+06  |
+#=============================================================================#
+        test_name   |ntup| tsamples |psamples|  p-value |Assessment
+#=============================================================================#
+     diehard_squeeze|   0|    100000|     100|0.04661947|  PASSED  
+
+
+RAW TEST 15
+#=============================================================================#
+#            dieharder version 3.31.1 Copyright 2003 Robert G. Brown          #
+#=============================================================================#
+   rng_name    |           filename             |rands/second|
+ file_input_raw|            pcg_random_bytes.bin|  3.90e+06  |
+#=============================================================================#
+        test_name   |ntup| tsamples |psamples|  p-value |Assessment
+#=============================================================================#
+        diehard_runs|   0|    100000|     100|0.52150651|  PASSED  
+        diehard_runs|   0|    100000|     100|0.75817256|  PASSED  
+
+
+RAW TEST 16
+#=============================================================================#
+#            dieharder version 3.31.1 Copyright 2003 Robert G. Brown          #
+#=============================================================================#
+   rng_name    |           filename             |rands/second|
+ file_input_raw|            pcg_random_bytes.bin|  3.71e+06  |
+#=============================================================================#
+        test_name   |ntup| tsamples |psamples|  p-value |Assessment
+#=============================================================================#
+       diehard_craps|   0|    200000|     100|0.91985122|  PASSED  
+       diehard_craps|   0|    200000|     100|0.81478325|  PASSED  
+

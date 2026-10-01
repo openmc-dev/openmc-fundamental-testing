@@ -1,0 +1,19 @@
+STATISTICAL ERROR TEST CHECKLIST
+--------------------------------------------------------------------------------
+Histories + both methods                   : PASS
+  Ns=[10000, 100000, 1000000], n_real increasing=True
+Error trend decreases with N               : PASS
+  analog=[0.6722661095835795, 0.5193259257417105, 0.3597569752107138]
+ fwcadis=[0.37741189737777586, 0.2508338446172619, 0.1606841288416703]
+VR error lower at same N                   : PASS
+  FW<Analog per N=[True, True, True]
+FW-CADIS VOV available + convergent        : PASS
+  median VOV=[0.15072354713243258, 0.02460288392648034, 0.002359149380283788]
+Expected mean/variance/VOV behavior        : PASS
+  mean_change_A=[0.07930016244975119, 0.03512364298951447]
+  mean_change_F=[0.016247983325760662, 0.011528170595522325]
+ var_med_A=[0.036482451681766184, 0.003636752905696488, 0.0007470376536411158]
+ var_med_F=[0.0018955068872915618, 0.00014153547520606225, 1.4298302736502785e-05]
+ tol=1.3
+--------------------------------------------------------------------------------
+OVERALL VERDICT: PASS

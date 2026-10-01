@@ -1,0 +1,147 @@
+\section{Quick Install Guide}
+\label{quickinstall}
+
+This quick install guide outlines the basic steps needed to install OpenMC on
+your computer. For more detailed instructions on configuring and installing
+OpenMC, see the User's Manual.
+
+\subsection*{Installing on Linux/Mac with Conda}
+
+\href{https://docs.conda.io/en/latest/}{Conda} is an open source package management
+system and environments management system for installing multiple versions of
+software packages and their dependencies and switching easily between them.
+OpenMC can be installed in a \texttt{conda} environment. First, \texttt{conda} should be
+installed (\href{https://www.anaconda.com/docs/getting-started/getting-started}{installation guide})
+with either Anaconda Distribution or Miniconda. Once you have \texttt{conda} installed
+on your system, OpenMC can be installed via the \texttt{conda-forge} channel.
+
+First, add the \texttt{conda-forge} channel with:
+
+\begin{verbatim}
+conda config --add channels conda-forge
+conda config --set channel_priority strict
+\end{verbatim}
+
+Then create and activate a new conda environment called \texttt{openmc-env} (or whatever
+you wish) with OpenMC installed.
+
+\begin{verbatim}
+conda create --name openmc-env openmc
+conda activate openmc-env
+\end{verbatim}
+
+If you are installing on macOS with an Apple silicon ARM-based processor, you
+will also need to specify the \texttt{--platform} option:
+
+\begin{verbatim}
+conda create --name openmc-env --platform osx-64 openmc
+\end{verbatim}
+
+You are now in a conda environment called \texttt{openmc-env} that has OpenMC installed.
+
+\subsection*{Installing on Linux/Mac/Windows with Docker}
+
+OpenMC can be easily deployed using \href{https://www.docker.com/}{Docker} on any
+Windows, Mac, or Linux system. With Docker running, execute the following command
+in the shell to download and run a Docker image with the most recent release
+of OpenMC from \href{https://hub.docker.com/}{DockerHub}:
+
+\begin{verbatim}
+docker run openmc/openmc:latest
+\end{verbatim}
+
+This will take several minutes to run depending on your internet download speed.
+The command will place you in an interactive shell running in a Docker
+container with OpenMC installed.
+
+\paragraph{Note}
+The \texttt{docker run} command supports many \href{https://docs.docker.com/engine/reference/commandline/run/}{options}
+for spawning containers including \href{https://docs.docker.com/storage/volumes/}{mounting volumes}
+from the host filesystem, which many users will find useful.
+
+\subsection*{Installing from Source using Spack}
+
+\href{https://spack.readthedocs.io/en/latest/}{Spack} is a package management tool designed to support multiple versions and
+configurations of software on a wide variety of platforms and environments.
+Please follow Spack's \href{https://spack.readthedocs.io/en/latest/getting_started.html}{setup guide} to configure the system.
+
+To install the latest OpenMC with the Python API, use the following command:
+
+\begin{verbatim}
+spack install py-openmc
+\end{verbatim}
+
+For more information about customizations including MPI, see the detailed installation
+instructions using Spack. Once installed, environment/lmod modules can be generated
+or Spack's \texttt{load} feature can be used to access the installed packages.
+
+\subsection*{Manually Installing from Source}
+
+\subsubsection*{Obtaining prerequisites on Ubuntu}
+
+When building OpenMC from source, all prerequisites can
+be installed using the package manager:
+
+\begin{verbatim}
+sudo apt install g++ cmake libhdf5-dev libpng-dev
+\end{verbatim}
+
+After the packages have been installed, follow the instructions to build from source below.
+
+\subsubsection*{Obtaining prerequisites on macOS}
+
+For an OpenMC build with multithreading enabled, a package manager like
+\href{https://brew.sh}{Homebrew} should first be installed. Then, the following
+packages should be installed, for example in Homebrew via:
+
+\begin{verbatim}
+brew install llvm cmake xtensor hdf5 python libomp libpng
+\end{verbatim}
+
+The compiler provided by the above LLVM package should be used in place of the
+one provisioned by XCode, which does not support the multithreading library used
+by OpenMC. To ensure CMake picks up the correct compiler, make sure that either
+the \texttt{CXX} environment variable is set to the brew-installed \texttt{clang++}
+or that the directory containing it is on your \texttt{PATH} environment
+variable. Common locations for the brew-installed compiler are
+\texttt{/opt/homebrew/opt/llvm/bin} and \texttt{/usr/local/opt/llvm/bin}.
+
+After the packages have been installed, follow the instructions to build from
+source below.
+
+\subsection*{Building Source on Linux or macOS}
+
+All OpenMC source code is hosted on \href{https://github.com/openmc-dev/openmc}{GitHub}.
+If you have \href{https://git-scm.com}{git}, a modern C++ compiler,
+\href{https://cmake.org}{CMake}, and \href{https://www.hdfgroup.org/solutions/hdf5/}{HDF5}
+installed, you can download and install OpenMC by entering the following commands
+in a terminal:
+
+\begin{verbatim}
+git clone --recurse-submodules https://github.com/openmc-dev/openmc.git
+cd openmc
+mkdir build && cd build
+cmake ..
+make
+sudo make install
+\end{verbatim}
+
+This will build an executable named \texttt{openmc} and install it (by default in
+\texttt{/usr/local/bin}). If you do not have administrator privileges, the cmake command
+should specify an installation directory where you have write access, e.g.
+
+\begin{verbatim}
+cmake -DCMAKE_INSTALL_PREFIX=$HOME/.local ..
+\end{verbatim}
+
+The \texttt{openmc} Python package must be installed separately. The easiest way
+to install it is using \href{https://pip.pypa.io/en/stable/}{pip}.
+From the root directory of the OpenMC repository, run:
+
+\begin{verbatim}
+python -m pip install .
+\end{verbatim}
+
+By default, OpenMC will be built with multithreading support. To build
+distributed-memory parallel versions of OpenMC using MPI or to configure other
+options, directions can be found in the detailed installation instructions.

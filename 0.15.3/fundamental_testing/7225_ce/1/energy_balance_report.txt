@@ -1,0 +1,6 @@
+A (source): 14.0000 MeV
+B (heating): 5.6712 MeV
+C (leakage): 5.3684 MeV
+D = B + C - A: -2.9603 MeV
+Capture Q estimate: +0.0770 MeV
+Difference: -3.0374 MeV

@@ -1,0 +1,7 @@
+Frequency            p=0.760675 PASS
+Serial               p=0.231492 PASS
+Runs                 p=0.138873 PASS
+Gap                  p=0.649345 PASS
+Poker                p=0.637097 PASS
+Autocorrelation      p=0.0976887 PASS
+OVERALL: PASS

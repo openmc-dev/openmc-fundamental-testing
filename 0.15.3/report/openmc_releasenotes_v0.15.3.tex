@@ -1,0 +1,196 @@
+\section{What's New in 0.15.3}
+
+\subsection*{Summary}
+
+This release of OpenMC includes many bug fixes, performance improvements, and
+several notable new features. The major highlights of this release include a new
+\texttt{openmc.deplete.R2SManager} class that automates the workflow for
+rigorous 2-step (R2S) shutdown dose rate calculations, the ability to collect
+higher moments for tally results that can be used to test normality, a new
+uncertainty-aware criticality search method, a new collision tracking feature
+that enables detailed tracking of particle interactions, support for distributed
+cell densities, and several new tally filters. The random ray solver also
+continues to receive significant updates, including automatic setup
+capabilities, improved geometry handling, and better weight window support.
+Depletion capabilities have been expanded with thermochemical redox control,
+external transfer rates, and improved performance.
+
+\subsection*{Compatibility Notes and Deprecations}
+
+MCPL has been changed from a build-time dependency to a runtime optional
+dependency, which means OpenMC will attempt to load the MCPL library at
+runtime when needed rather than requiring it at build time.
+
+The \texttt{openmc.mgxs.Library.add\_to\_tallies\_file} method has been renamed to\newline
+\texttt{openmc.mgxs.Library.add\_to\_tallies}.
+
+\subsection*{New Features}
+
+\begin{itemize}
+\item A new collision tracking feature enables detailed tracking of particle interactions (\href{https://github.com/openmc-dev/openmc/pull/3417}{\#3417})
+\item Added \texttt{openmc.model.Model.keff\_search} method for automated criticality searches (\href{https://github.com/openmc-dev/openmc/pull/3569}{\#3569})
+\item Introduced automated workflow for mesh- or cell-based R2S calculations (\href{https://github.com/openmc-dev/openmc/pull/3508}{\#3508})
+\item Ability to source electron/positrons directly for charged particle simulations (\href{https://github.com/openmc-dev/openmc/pull/3404}{\#3404})
+\item Multi-group capability for kinetics parameter calculations with Iterated Fission Probability (\href{https://github.com/openmc-dev/openmc/pull/3425}{\#3425})
+\item Introduced a new \texttt{openmc.MeshMaterialFilter} class (\href{https://github.com/openmc-dev/openmc/pull/3406}{\#3406})
+\item Added support for distributed cell densities (\href{https://github.com/openmc-dev/openmc/pull/3546}{\#3546})
+\item Implemented a \texttt{openmc.WeightWindowsList} class that enables export to HDF5 (\href{https://github.com/openmc-dev/openmc/pull/3456}{\#3456})
+\item Added \texttt{openmc.Material.mean\_free\_path} method (\href{https://github.com/openmc-dev/openmc/pull/3469}{\#3469})
+\item Introduced \texttt{openmc.lib.TemporarySession} context manager (\href{https://github.com/openmc-dev/openmc/pull/3475}{\#3475})
+\item Added material depletion function for tracking individual material depletion (\href{https://github.com/openmc-dev/openmc/pull/3420}{\#3420})
+\item Added methods on \texttt{openmc.Material} class for waste disposal rating/classification (\href{https://github.com/openmc-dev/openmc/pull/3366}{\#3366}, \href{https://github.com/openmc-dev/openmc/pull/3376}{\#3376})
+\item Support for thermochemical redox control transfer rates in depletion (\href{https://github.com/openmc-dev/openmc/pull/2783}{\#2783})
+\item Support for external transfer rates source term in depletion (\href{https://github.com/openmc-dev/openmc/pull/3088}{\#3088})
+\item Added combing capability for fission site sampling and delayed neutron emission time (\href{https://github.com/openmc-dev/openmc/pull/2992}{\#2992})
+\item Ability to specify reference direction for azimuthal angle in \texttt{openmc.stats.PolarAzimuthal} distribution (\href{https://github.com/openmc-dev/openmc/pull/3582}{\#3582})
+\item Allow spatial constraints on element sources within \texttt{openmc.MeshSource} (\href{https://github.com/openmc-dev/openmc/pull/3431}{\#3431})
+\item Added VTK HDF (.vtkhdf) format support for writing VTK data (\href{https://github.com/openmc-dev/openmc/pull/3252}{\#3252})
+\item Implemented filter weight capability (\href{https://github.com/openmc-dev/openmc/pull/3345}{\#3345})
+\item Optionally collect higher moments for tallies (\href{https://github.com/openmc-dev/openmc/pull/3363}{\#3363})
+\end{itemize}
+
+\paragraph{Random Ray Solver Enhancements}
+\begin{itemize}
+\item Random Ray AutoMagic Setup for automatic configuration (\#3351)
+\item Point source locator for random ray mode (\#3360)
+\item Support for DAGMC geometries (\#3374)
+\item Optimized mapping of source regions to tallies (\#3465)
+\item Base source region refactor (\#3576)
+\end{itemize}
+
+\subsection*{Bug Fixes and Small Changes}
+
+\begin{itemize}
+\item Add two MPI barriers in R2S workflow (\#3646)
+\item Fix a few warnings, rename add\_to\_tallies\_file (\#3639)
+\item Fix typo in DAGMC lost particle test (\#3634)
+\item Avoid multiprocessing Pool when running depletion tests with MPI (\#3633)
+\item Support MPI parallelism in R2SManager (\#3632)
+\item Update documentation for particle tracks (\#3627)
+\item Adding variance of variance and normality tests for tally statistics (\#3454)
+\item Avoid divide-by-zero in \texttt{from\_multigroup\_flux} when flux is zero (\#3624)
+\item Write particle states as separate lines in track VTK files (\#3628)
+\item Reset DAGMC history when reviving from source (\#3601)
+\item Add energy group structure: SCALE-999 (\#3564)
+\item Fix bug in normalization of tally results with no\_reduce (\#3619)
+\item Enable nuclide filters with get\_decay\_photon\_energy (\#3614)
+\item Update \texttt{check\_type} calls to accept both \texttt{str} and \texttt{os.PathLike} objects (\#3618)
+\item Speed up \texttt{apply\_time\_correction} by reducing file I/O and deepcopies (\#3617)
+\item FW-CADIS Disregard Max Realizations Setting (\#3616)
+\item Random Ray Geometry Debug Mode Fix (\#3615)
+\item Don't write reaction rates in depletion results by default (\#3609)
+\item Allow Path objects in MGXSLibrary.export\_to\_hdf5 (\#3608)
+\item Clip mixture distributions based on mean times integral (\#3603)
+\item Allow V0 in atomic\_mass function (\#3607)
+\item Re-run flaky tests when needed (\#3604)
+\item Ability to load mesh objects from weight\_windows.h5 file (\#3598)
+\item Switch to using coveralls github action for reporting (\#3594)
+\item Add user setting for free gas threshold (\#3593)
+\item Speed up time correction factors (\#3592)
+\item Fix caching issue when using NCrystal materials (\#3538)
+\item Fix random ray source region mesh export (\#3579)
+\item Ensure weight\_windows\_file information is read from XML (\#3587)
+\item Add missing documentation on \textless source\textgreater{} (\#3590)
+\item Adding tally filter type option (\#3584)
+\item Optional separation of mesh-material-volume calc (\#3581)
+\item Fix IFP implementation (\#3580)
+\item Remove several TODOs related to C++17 (\#3574)
+\item Fix performance regression in libMesh tallies (\#3577)
+\item Update find\_package calls (\#3572)
+\item Ensure \texttt{n\_dimension\_} attribute is set (\#3575)
+\item Allow newer Sphinx version (\#3571)
+\item Fixed bug combining filters (\#3525)
+\item PowerLaw negative interval error (\#3542)
+\item Fix chain matrix performance (\#3567)
+\item Do not apply boundary conditions in volume calc (\#3562)
+\item Bump tolerance for activation test (\#3560)
+\item Fixed cross-section plotting bug (\#3558)
+\item Change test order (\#3533)
+\item adding ecco 33 (\#3556)
+\item Refactor endf\_data (\#3539)
+\item Revert "fix broken CI" (\#3554)
+\item fix broken CI (\#3551)
+\item Leverage particle.move\_distance (\#3544)
+\item fix tests broken (\#3543)
+\item not printing 0 percent nuclides (\#3448)
+\item Fix time cutoff bug (\#3526)
+\item Avoid duplicate materials in XML (\#3536)
+\item Use cached property for sources (\#3535)
+\item better error message (\#3534)
+\item Adding 616 group structure (\#3531)
+\item Remove unused accessors (\#3527)
+\item Consistent XML parsing (\#3517)
+\item Add stat:sum field (\#3522)
+\item Remove reorder\_attributes (\#3519)
+\item Fix MeshMaterialFilter bug (\#3520)
+\item Fix distribcell offsets (\#3424)
+\item Add FW-CADIS DAGMC test (\#3504)
+\item Fix Weight Window scaling (\#3511)
+\item Fix list input bug (\#3513)
+\item Allow initialized TemporarySession (\#3505)
+\item Update DAGMC definitions (\#3510)
+\item Avoid duplicate filters (\#3506)
+\item Enable MCPL source files (\#3472)
+\item Boundary accessors (\#3496)
+\item Auto dimension for mesh (\#3468)
+\item Add LocalCoord accessors (\#3494)
+\item Make MCPL runtime optional (\#3429)
+\item Use auto-chunking HDF5 (\#3498)
+\item Get ID maps from Model (\#3481)
+\item Update OSX install instructions (\#3501)
+\item Update conda instructions (\#3488)
+\item Only show warning in restart mode (\#3478)
+\item Add CMake submodule flag (\#3480)
+\item Added citation metadata file (\#3409)
+\item fix zam parsing (\#3484)
+\item Support flux collapse method (\#3466)
+\item Stabilize Adjoint Source (\#3476)
+\item Refactor Configuration Management (\#3461)
+\item Updated Docs (\#3473)
+\item Parallel Weight Window Update (\#3467)
+\item Limit Random Ray Weight Window Generation (\#3464)
+\item Fix Dockerfile DAGMC (\#3463)
+\item Fix Weight Window loop bug (\#3457)
+\item Weight Window Birth Scaling (\#3459)
+\item geometry.plot fixes (\#3458)
+\item Fix DAGMC plot crash (\#3455)
+\item Fix Ta expansion bug (\#3443)
+\item Prevent Adjoint Infinity (\#3449)
+\item add DAGMC plot (\#3451)
+\item Allow equiprobable angles (\#3346)
+\item Change Docker base image (\#3442)
+\item Fix MGXS IDs (\#3437)
+\item Allow chain\_file as object (\#3436)
+\item update flux units (\#3441)
+\item Fix raytrace loop (\#3423)
+\item Apply max events check (\#3438)
+\item Source rejection fraction (\#3433)
+\item Fix spherical mesh (\#3428)
+\item Random Ray policy change (\#3434)
+\item Plotting fix (\#3430)
+\item Avoid negative heating (\#3426)
+\item Fix serialization bug (\#3421)
+\item Fix timestep start data (\#3414)
+\item Fix charged particle deposition (\#3416)
+\item Fix duplicate mesh XML (\#3418)
+\item Debian typo (\#3411)
+\item DAGMC plot test (\#3375)
+\item Memory fixes (\#3405)
+\item type hints (\#3399)
+\item resolve paths (\#3400)
+\item Fix CDF computation (\#3396)
+\item Fix source weighting (\#3395)
+\item VTK checks update (\#3371)
+\item Map Compton data (\#3392)
+\item Skip atomic relaxation (\#3391)
+\item Fix large bremsstrahlung yields (\#3386)
+\item Fix tally name (\#3383)
+\item Install MCPL in CI (\#3388)
+\item Chain level reduction (\#3377)
+\item Fix CylindricalMesh distances (\#3370)
+\item EnergyFilter bin check (\#3372)
+\item Fix LLVM loading (\#3368)
+\item Plot ID reporting (\#3361)
+\item Handle missing tags (\#3359)
+\item Add kg units (\#3358)
+\end{itemize}

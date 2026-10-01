@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='utf-8'?>
+<model>
+  <materials>
+  </materials>
+  <geometry>
+    <cell id="1" material="void" region="-1" universe="1"/>
+    <cell id="2" material="void" region="1 -2" universe="1"/>
+    <surface id="1" type="sphere" coeffs="0.0 0.0 0.0 5.0"/>
+    <surface id="2" type="sphere" boundary="vacuum" coeffs="0.0 0.0 0.0 25.0"/>
+  </geometry>
+  <settings>
+    <run_mode>fixed source</run_mode>
+    <particles>100</particles>
+    <batches>10000</batches>
+    <source type="independent" strength="1.0" particle="neutron">
+      <space type="point">
+        <parameters>0.0 0.0 10.0</parameters>
+      </space>
+      <angle type="isotropic"/>
+      <energy type="discrete">
+        <parameters>14000000.0 1.0</parameters>
+      </energy>
+    </source>
+    <output>
+      <tallies>false</tallies>
+    </output>
+    <state_point>
+      <batches>100 1000 10000</batches>
+    </state_point>
+    <seed>1</seed>
+  </settings>
+  <tallies>
+    <filter id="1" type="cell">
+      <bins>1</bins>
+    </filter>
+    <tally id="1" name="sphere_flux">
+      <filters>1</filters>
+      <scores>flux</scores>
+    </tally>
+  </tallies>
+</model>
