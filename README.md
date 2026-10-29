@@ -17,17 +17,24 @@ against current and future OpenMC releases.
 The current repository covers the fundamental tests required by the qualification
 procedure, including:
 
-| Requirement | Test |
-|-------------|------|
-| 7.2.2.1 | Statistical error |
-| 7.2.2.2 | Statistical error with weight windows |
-| 7.2.2.3 | Random number generator |
-| 7.2.2.4 | Source sampling |
-| 7.2.2.5 | Conservation of energy for nuclear reactions |
+| Requirement | Test                   | Status |
+|-------------|------------------------|--------|
+| 7.2.1.1   | Neutron and Photon Flux | TBD
+| 7.2.1.2.1 | Nuclear Heat | TBD
+| 7.2.1.2.2 | Tritium Production | Done
+| 7.2.1.2.3 | Dose - SDDR | TBD
+| 7.2.1.2.4 | Helium Production | TBD
+| 7.2.1.2.5 | DPA | TBD
+| 7.2.2.1   | Statistical error | Done
+| 7.2.2.2   | Statistical error with weight windows | Done 
+| 7.2.2.3   | Random number generator | Done
+| 7.2.2.4   | Source sampling | Done
+| 7.2.2.5   | Conservation of energy for nuclear reactions | Done
 
 Additionally, a report folder is included.
 
-In the future routines to automatically retrieve JADE results and post-process them in to the format needed by the report will be added.
+The first routine to retrieve JADE results and post-process them has been developed - Tritium Production. Python script retrieves data from JADE-RAW and post processes it.
+
 
 ## Repository Structure
 
