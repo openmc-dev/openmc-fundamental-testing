@@ -136,9 +136,15 @@ Appendix \ref{detailedresults} and archived as objective evidence in the above m
 
 \section{Conclusion}
 
+{% if all_tests_passed %}
 Based on the verification and validation activities documented in this report,
 \textbf{OpenMC version {{ openmc.version }}} is in our opinion considered suitable for use in
 ITER radiation transport calculations within the scope defined in ITER\_D\_VP6DJL v2.1. 
+{% else %}
+Qualification of \textbf{OpenMC version {{ openmc.version }}} for ITER radiation transport
+calculations has not been established. All required tests must be completed and pass
+before a positive qualification conclusion can be drawn.
+{% endif %}
 
 \appendix
 
