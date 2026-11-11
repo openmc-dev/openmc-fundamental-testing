@@ -1,0 +1,13 @@
+name: openmc-fundamental-testing
+channels:
+  - conda-forge
+dependencies:
+  - python=3.12
+  - openmc=0.16.0=nodagmc_nompi_*
+  - numpy
+  - scipy
+  - pandas
+  - matplotlib-base
+  - h5py
+  - requests
+  - jinja2

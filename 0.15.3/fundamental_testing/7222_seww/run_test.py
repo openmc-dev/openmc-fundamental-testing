@@ -67,7 +67,7 @@ rr_model.convert_to_multigroup(
     method='stochastic_slab',
     overwrite_mgxs_library=True,
     mgxs_path=str(MGXS_PATH),
-    nparticles=2000,
+    particles=2000,
     groups='ECCO-33'
 )
 
