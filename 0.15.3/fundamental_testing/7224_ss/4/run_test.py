@@ -229,4 +229,7 @@ result = 'PASS' if frac_agree >= pass_fraction else 'FAIL'
 with open('results.txt', 'w') as results_file:
     results_file.write(result + '\n')
 
+if result != 'PASS':
+    raise SystemExit(1)
+
 

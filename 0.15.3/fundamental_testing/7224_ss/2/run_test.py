@@ -192,4 +192,7 @@ result = 'PASS' if overall_pass else 'FAIL'
 with open('results.txt', 'w') as results_file:
     results_file.write(result + '\n')
 
+if not overall_pass:
+    raise SystemExit(1)
+
 

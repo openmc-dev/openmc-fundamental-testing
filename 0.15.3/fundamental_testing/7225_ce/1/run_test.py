@@ -167,4 +167,7 @@ f'Difference: {(D - E_ng) / 1e6:+.4f} MeV\n'
 overall_pass = bool(np.isfinite(D - E_ng) and abs(D - E_ng) <= 10000)
 Path('results.txt').write_text('PASS\n' if overall_pass else 'FAIL\n')
 
+if not overall_pass:
+    raise SystemExit(1)
+
 

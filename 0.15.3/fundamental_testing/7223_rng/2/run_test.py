@@ -94,4 +94,7 @@ Path('dieharder_report.txt').write_text('\n'.join(report_lines) + '\n')
 Path('results.txt').write_text('PASS\n' if overall_pass else 'FAIL\n')
 Path('pcg_random_bytes.bin').unlink(missing_ok=True)
 
+if not overall_pass:
+    raise SystemExit(1)
+
 
