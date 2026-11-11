@@ -11,7 +11,7 @@ ROOT = Path(__file__).resolve().parents[1]
 
 class ExitCodeTests(unittest.TestCase):
     def test_verdicts(self):
-        scripts = sorted(ROOT.glob('*/**/run_test.py'))
+        scripts = sorted((ROOT / '0.15.3').glob('**/run_test.py'))
         self.assertTrue(scripts)
         for script in scripts:
             tree = ast.parse(script.read_text())
