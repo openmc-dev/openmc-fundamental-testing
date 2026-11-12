@@ -12,6 +12,30 @@ radiation transport applications.
 The tests are designed to be reproducible and suitable for automated execution
 against current and future OpenMC releases.
 
+## Current Release
+
+The current target is **OpenMC 0.16.0** with Python 3.12. Both the Python API
+and executable versions are checked before running a test.
+
+```bash
+conda env create -f environment.yml
+conda activate openmc-fundamental-testing
+export OPENMC_CROSS_SECTIONS=/path/to/cross_sections.xml
+python run_tests.py --list
+python run_tests.py fundamental_testing/7221_se
+```
+
+Results are generated under `0.16.0/`, with runtime versions recorded for each
+test. Choose additional test directories from `--list` to run multiple tests.
+An existing output directory must be archived or removed before rerunning it.
+The Dieharder test also requires `/usr/bin/dieharder` to be installed.
+
+The `0.15.3/` outputs and qualification report are historical evidence, not
+results for 0.16.0. The runner reuses their scripts and required model/reference
+inputs without copying old OpenMC results. Functional benchmark post-processing
+still uses its original JADE data and is not evidence for the new release.
+The implementation statuses below do not claim qualification of OpenMC 0.16.0.
+
 ## Scope
 
 The current repository covers the fundamental tests required by the qualification
@@ -46,14 +70,18 @@ A typical test has the structure:
 <test-name>/
 ├── run_test.py
 └── ...
+```
 
 The repository also contains a report/ directory used to generate the qualification report:
 
+```text
 report/
 ├── ...
 ├── detailed_results.tex
 ├── openmc_quickinstall.tex
 ├── publications.tex
 └── ...
+```
 
-TO DO: add instructions on how to run the tests and compile the report.
+Report compilation requires a LaTeX installation. From `0.15.3/report`, run
+`python build_report.py` to rebuild the historical 0.15.3 report.
