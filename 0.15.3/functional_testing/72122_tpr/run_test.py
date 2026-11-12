@@ -184,4 +184,7 @@ with open('results.txt', 'w') as results_file:
     results_file.write(result + '\n')
 print(result)
 
+if not overall_pass:
+    raise SystemExit(1)
+
 

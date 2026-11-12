@@ -146,4 +146,7 @@ report_lines.append(f'OVERALL: {"PASS" if overall_pass else "FAIL"}')
 Path('knuth_report.txt').write_text('\n'.join(report_lines) + '\n')
 Path('results.txt').write_text('PASS\n' if overall_pass else 'FAIL\n')
 
+if not overall_pass:
+    raise SystemExit(1)
+
 
