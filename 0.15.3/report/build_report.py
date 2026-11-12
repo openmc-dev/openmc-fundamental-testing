@@ -129,6 +129,11 @@ data = {
     ]
 }
 
+data["all_tests_passed"] = all(
+    bool(results) and all(result["status"] == "PASS" for result in results)
+    for results in (data["results_functional"], data["results_fundamental"])
+)
+
 # -----------------------------
 # Load and render LaTeX template
 # -----------------------------
